@@ -1,0 +1,162 @@
+---
+title: How to Use Nextra with Tailwind CSS and shadcn
+description: Learn how to set up a Next.js project with Nextra, Tailwind CSS, and shadcn to build a modern documentation site or blog.
+date: 2022-01-01
+author: tison
+---
+
+# How to Use Nextra with Tailwind CSS and shadcn
+
+import ArticleBanner from '@/components/article-banner'
+
+<ArticleBanner />
+
+If you're looking to build a sleek, modern documentation site or blog, combining Nextra with Tailwind CSS and shadcn can offer a powerful and efficient solution. In this article, we'll walk through the steps to set up your project using these tools.
+
+## Recommended way
+
+Use template directly.
+
+import { Button } from "@/components/ui/button";
+import { GitHubLogoIcon, VercelLogoIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+
+<Button variant="outline" asChild>
+    <Link href="https://github.com/ObservedObserver/nextra-docs-tailwind-shadcn-template" className="gap-2">
+        <GitHubLogoIcon />
+        <span>View on Github</span>
+    </Link>
+</Button>
+<Button asChild>
+    <Link href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FObservedObserver%2Fnextra-docs-tailwind-shadcn-template" className="gap-2">
+        <VercelLogoIcon />
+        <span>Deploy on Vercel</span>
+    </Link>
+</Button>
+
+## What is Nextra?
+
+Nextra is a Next.js-based static site generator that's perfect for creating documentation sites. It provides a simple and flexible way to manage content with markdown files and supports features like syntax highlighting, custom themes, and more.
+
+## Why Tailwind CSS?
+
+Tailwind CSS is a utility-first CSS framework that allows you to build custom designs without writing CSS from scratch. Its component-based approach and extensive customization options make it a popular choice for modern web development.
+
+## Introduction to shadcn
+
+shadcn is a simple and customizable component library that pairs well with Tailwind CSS. It provides a set of pre-designed components that you can easily integrate into your project, helping you maintain consistency and speed up development.
+
+## Getting Started
+
+### Step 1: Set Up a New Next.js Project
+
+First, create a new Next.js project if you haven't already:
+
+```bash
+npx create-next-app nextra-tailwind-shadcn
+cd nextra-tailwind-shadcn
+```
+
+### Step 2: Install Nextra
+
+Add Nextra to your project by installing it as a dependency:
+
+```bash
+npm install nextra
+```
+
+Then, update your `next.config.js` to use Nextra:
+
+```js
+// next.config.js
+const withNextra = require('nextra')('nextra-theme-docs', './theme.config.js');
+module.exports = withNextra();
+```
+
+### Step 3: Install Tailwind CSS
+
+Follow the Tailwind CSS installation steps:
+
+1. Install Tailwind CSS and its dependencies:
+
+   ```bash
+   npm install tailwindcss postcss autoprefixer
+   ```
+
+2. Create your `tailwind.config.js` and `postcss.config.js`:
+
+   ```bash
+   npx tailwindcss init -p
+   ```
+
+3. Configure your template paths in `tailwind.config.js`:
+
+   ```js
+   // tailwind.config.js
+   module.exports = {
+     content: [
+       './pages/**/*.{js,ts,jsx,tsx,mdx}',
+       './components/**/*.{js,ts,jsx,tsx}',
+     ],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   };
+   ```
+
+4. Include Tailwind in your CSS:
+
+   ```css
+   /* styles/globals.css */
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
+
+### Step 4: Add shadcn Components
+
+Install shadcn:
+
+```bash
+npm install shadcn
+```
+
+You can now import and use shadcn components in your pages or components. For example:
+
+```jsx
+import { Button } from 'shadcn';
+
+const MyButton = () => <Button>Click me!</Button>;
+
+export default MyButton;
+```
+
+### Step 5: Customize Your Theme
+
+Nextra allows you to customize the theme by editing `theme.config.js`. Here, you can define your site's title, logo, and other configurations.
+
+```js
+// theme.config.js
+module.exports = {
+  projectLink: 'https://github.com/your-repo',
+  docsRepositoryBase: 'https://github.com/your-repo/docs',
+  titleSuffix: ' – Your Site',
+  logo: <span>Your Logo</span>,
+  // more configurations...
+};
+```
+
+### Step 6: Start Your Development Server
+
+Run your development server to see your changes:
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:3000` to see your Nextra site with Tailwind CSS and shadcn components in action.
+
+## Conclusion
+
+By combining Nextra, Tailwind CSS, and shadcn, you can create a highly customizable and modern documentation site or blog. Each tool brings unique strengths, making this stack an excellent choice for developers looking to build fast and stylish web applications. Enjoy building your next project with this powerful setup!

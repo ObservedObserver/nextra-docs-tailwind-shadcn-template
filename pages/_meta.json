@@ -1,8 +1,11 @@
 {
-  "index": "Introduction",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
+  "index": {
+    "type": "page",
+    "title": "Homepage",
+    "display": "hidden"
+  },
+  "posts": {
+    "title": "Posts",
     "type": "page"
   },
   "contact": {
@@ -10,5 +13,10 @@
     "type": "page",
     "href": "https://twitter.com/shuding_",
     "newWindow": true
+  },
+  "about": {
+    "title": "About",
+    "type": "page",
+    "display": "hidden"
   }
 }
