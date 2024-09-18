@@ -2,16 +2,7 @@ import { useConfig } from "nextra-theme-docs";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import AuthorAvatar, { Author } from "./author-avatar";
-
-export const allAuthors = [
-    {
-        name: "Tison Brokenshire",
-        nickname: "tison",
-        picture: "/avatar-images/tison.svg"
-    },
-] as const;
-
-export type ValidAuthorName = (typeof allAuthors)[number]["nickname"];
+import { allAuthors, ValidAuthorName } from "@/lib/author";
 
 export default function ArticleBanner() {
     const { locale } = useRouter();

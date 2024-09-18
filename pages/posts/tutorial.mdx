@@ -7,7 +7,7 @@ author: tison
 
 # How to Use Nextra with Tailwind CSS and shadcn
 
-import ArticleBanner from '@/components/article-banner'
+import ArticleBanner from "@/components/article-banner";
 
 <ArticleBanner />
 
@@ -22,13 +22,19 @@ import { GitHubLogoIcon, VercelLogoIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 <Button variant="outline" asChild>
-    <Link href="https://github.com/ObservedObserver/nextra-docs-tailwind-shadcn-template" className="gap-2">
+    <Link
+        href="https://github.com/ObservedObserver/nextra-docs-tailwind-shadcn-template"
+        className="gap-2"
+    >
         <GitHubLogoIcon />
         <span>View on Github</span>
     </Link>
 </Button>
 <Button asChild>
-    <Link href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FObservedObserver%2Fnextra-docs-tailwind-shadcn-template" className="gap-2">
+    <Link
+        href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FObservedObserver%2Fnextra-docs-tailwind-shadcn-template"
+        className="gap-2"
+    >
         <VercelLogoIcon />
         <span>Deploy on Vercel</span>
     </Link>
@@ -48,30 +54,35 @@ shadcn is a simple and customizable component library that pairs well with Tailw
 
 ## Getting Started
 
-### Step 1: Set Up a New Next.js Project
+### Step 1: Start with a Nextra Project
 
-First, create a new Next.js project if you haven't already:
+Following the official Nextra documentation, create a new Nextra project:
 
-```bash
-npx create-next-app nextra-tailwind-shadcn
-cd nextra-tailwind-shadcn
-```
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-### Step 2: Install Nextra
-
-Add Nextra to your project by installing it as a dependency:
-
-```bash
-npm install nextra
-```
-
-Then, update your `next.config.js` to use Nextra:
-
-```js
-// next.config.js
-const withNextra = require('nextra')('nextra-theme-docs', './theme.config.js');
-module.exports = withNextra();
-```
+<Card className="inline-block">
+    <CardHeader>
+        <CardTitle>Nextra Project Setup Tutorial</CardTitle>
+    </CardHeader>
+    <CardFooter className="gap-2">
+        <Button variant="outline" asChild>
+            <Link
+                href="https://nextra.site/docs/docs-theme/start"
+                className="gap-2"
+            >
+                Follow Nextra Docs
+            </Link>
+        </Button>
+        <Button asChild>
+            <Link
+                href="https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false"
+                className="gap-2"
+            >
+                Deploy Nextra on Vercel
+            </Link>
+        </Button>
+    </CardFooter>
+</Card>
 
 ### Step 3: Install Tailwind CSS
 
@@ -79,83 +90,76 @@ Follow the Tailwind CSS installation steps:
 
 1. Install Tailwind CSS and its dependencies:
 
-   ```bash
-   npm install tailwindcss postcss autoprefixer
-   ```
+    ```bash
+    npm install tailwindcss postcss autoprefixer
+    ```
 
 2. Create your `tailwind.config.js` and `postcss.config.js`:
 
-   ```bash
-   npx tailwindcss init -p
-   ```
+    ```bash
+    npx tailwindcss init -p
+    ```
 
 3. Configure your template paths in `tailwind.config.js`:
 
-   ```js
-   // tailwind.config.js
-   module.exports = {
-     content: [
-       './pages/**/*.{js,ts,jsx,tsx,mdx}',
-       './components/**/*.{js,ts,jsx,tsx}',
-     ],
-     theme: {
-       extend: {},
-     },
-     plugins: [],
-   };
-   ```
+    ```js
+    // tailwind.config.js
+    module.exports = {
+        content: [
+            "theme.config.js",
+            "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+            "./components/**/*.{js,ts,jsx,tsx}",
+        ],
+        theme: {
+            extend: {},
+        },
+        plugins: [],
+    };
+    ```
 
 4. Include Tailwind in your CSS:
 
-   ```css
-   /* styles/globals.css */
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
-   ```
+    ```css
+    /* styles/globals.css */
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    ```
 
-### Step 4: Add shadcn Components
+### Step 4: Setup shadcn Components
 
-Install shadcn:
+Setup baseUrl in for tsconfig.json:
+
+```json
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./*"]
+        }
+    }
+}
+```
+
+Init shadcn:
 
 ```bash
-npm install shadcn
+npx shadcn init
+```
+
+Install shadcn components, for example, button:
+
+```bash
+npx shadcn add button
 ```
 
 You can now import and use shadcn components in your pages or components. For example:
 
 ```jsx
-import { Button } from 'shadcn';
+import { Button } from "@/components/ui/button";
 
-const MyButton = () => <Button>Click me!</Button>;
-
-export default MyButton;
+<Button>Shadcn Button</Button>;
 ```
-
-### Step 5: Customize Your Theme
-
-Nextra allows you to customize the theme by editing `theme.config.js`. Here, you can define your site's title, logo, and other configurations.
-
-```js
-// theme.config.js
-module.exports = {
-  projectLink: 'https://github.com/your-repo',
-  docsRepositoryBase: 'https://github.com/your-repo/docs',
-  titleSuffix: ' – Your Site',
-  logo: <span>Your Logo</span>,
-  // more configurations...
-};
-```
-
-### Step 6: Start Your Development Server
-
-Run your development server to see your changes:
-
-```bash
-npm run dev
-```
-
-Visit `http://localhost:3000` to see your Nextra site with Tailwind CSS and shadcn components in action.
 
 ## Conclusion
 
